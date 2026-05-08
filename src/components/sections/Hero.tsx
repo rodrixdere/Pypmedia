@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { heroContent } from '../../data/content'
+import heroVideo from '../../assets/Hero/hero.mp4'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -83,9 +84,9 @@ export default function Hero() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 1 }}
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
 
       {/* Fallback background (visible when no video) */}
@@ -116,7 +117,7 @@ export default function Hero() {
           </span>
 
           <h1
-            className="font-display font-bold leading-none mb-6"
+            className="font-display font-bold leading-none mb-6 [text-shadow:0_2px_20px_rgba(0,0,0,0.8),0_4px_40px_rgba(0,0,0,0.6)]"
             style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
           >
             <span ref={line1Ref} className="block" style={{ color: 'var(--color-primary)' }}>
@@ -132,7 +133,7 @@ export default function Hero() {
 
           <p
             ref={subRef}
-            className="font-body text-base lg:text-lg leading-relaxed mb-10 max-w-xl"
+            className="font-body text-base lg:text-lg leading-relaxed mb-10 max-w-xl [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]"
             style={{ color: 'var(--color-cream)' }}
           >
             {heroContent.subheadline}

@@ -25,8 +25,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
         background: scrolled
-          ? 'rgba(10, 10, 10, 0.92)'
-          : 'transparent',
+  ? 'rgba(10, 10, 10, 0.92)'
+  : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, transparent 100%)',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid #1F1F1F' : '1px solid transparent',
       }}
@@ -39,14 +39,14 @@ export default function Navbar() {
             style={{ border: '1px solid var(--color-gold)' }}
           >
             <span
-              className="font-display font-800 text-xs"
+              className="font-display font-semibold text-sm tracking-widest uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
               style={{ color: 'var(--color-gold)' }}
             >
               P&P
             </span>
           </div>
           <span
-            className="font-display font-semibold text-sm tracking-widest uppercase"
+            className="font-display font-semibold text-sm tracking-widest uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
             style={{ color: 'var(--color-primary)' }}
           >
             Media CR
@@ -59,7 +59,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-body text-sm transition-colors duration-200"
+                className="font-body text-sm transition-colors duration-200 [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
                 style={{ color: 'var(--color-cream)', opacity: 0.7 }}
                 onMouseEnter={(e) => {
                   ;(e.target as HTMLElement).style.color = 'var(--color-gold)'
