@@ -33,7 +33,7 @@ export default function Footer() {
 
         <div className="flex gap-6 items-center">
           <a
-            href="mailto:ventas@pypmediacr.com"
+            href="mailto:rhorvilleur@pypmediacr.com"
             className="font-body text-xs transition-colors duration-200"
             style={{ color: 'var(--color-cream)', opacity: 0.4 }}
             onMouseEnter={(e) => {
@@ -45,7 +45,7 @@ export default function Footer() {
               ;(e.target as HTMLElement).style.opacity = '0.4'
             }}
           >
-            ventas@pypmediacr.com
+            rhorvilleur@pypmediacr.com
           </a>
           <a
             href="https://wa.me/50660661122"

@@ -1,5 +1,18 @@
 import type { CardItem, Feature, ContactInfo } from '../types'
 
+// HorizontalCard images
+import imgRestauracion from '../assets/HorizontalCard/Restauracion.png'
+import imgRetail from '../assets/HorizontalCard/Retail.png'
+import imgHoteles from '../assets/HorizontalCard/Hoteles.png'
+import imgSalud from '../assets/HorizontalCard/Salud.png'
+import imgSupermercado from '../assets/HorizontalCard/Supermercado.png'
+
+// Feature images
+import imgCatalogos from '../assets/Features/Catalogos.png'
+import imgDisplay from '../assets/Features/Display.png'
+import imgOfertas from '../assets/Features/Ofertas.png'
+import imgPrecios from '../assets/Features/Precios.png'
+
 export const heroContent = {
   tagline: 'Digital Signage — Partner oficial NSIGN TV en Costa Rica',
   headline: 'Tu pantalla.',
@@ -17,35 +30,35 @@ export const cards: CardItem[] = [
     title: 'Restauración',
     description: 'Menús digitales de alto impacto. Actualizá precios y promociones al instante sin intermediarios.',
     tag: 'Gastronomía',
-    image: './src/assets/HorizontalCard/Restauracion.png',
+    image: imgRestauracion,
   },
   {
     id: 2,
     title: 'Retail',
     description: 'Publicidad digital y comunicación de promociones en tiempo real desde cualquier sucursal.',
     tag: 'Comercio',
-    image: './src/assets/HorizontalCard/Retail.png',
+    image: imgRetail,
   },
   {
     id: 3,
     title: 'Hoteles',
     description: 'Bienvenida personalizada, información de servicios y señalización para una experiencia huésped de primer nivel.',
     tag: 'Hospitalidad',
-    image: './src/assets/HorizontalCard/Hoteles.png',
+    image: imgHoteles,
   },
   {
     id: 4,
     title: 'Salud',
     description: 'Administración de turnos y filas con comunicación visual y auditiva para guiar a tus clientes.',
     tag: 'Salud',
-    image: './src/assets/HorizontalCard/Salud.png',
+    image: imgSalud,
   },
   {
     id: 5,
     title: 'Supermercados',
     description: 'Señalización dinámica de precios, promociones y publicidad en punto de venta para maximizar ventas.',
     tag: 'Supermercados',
-    image: './src/assets/HorizontalCard/Supermercado.png',
+    image: imgSupermercado,
   },
 ]
 
@@ -57,7 +70,7 @@ export const features: Feature[] = [
     highlight: 'Sin intermediarios.',
     description:
       'Administrá tu contenido digital y presentalo a tus clientes al instante sin demoras. Desde tu PC y desde cualquier parte del mundo, con control total sobre lo que se muestra en pantalla.',
-      image: './src/assets/Features/Catalogos.png',
+    image: imgCatalogos,
   },
   {
     id: 2,
@@ -66,7 +79,7 @@ export const features: Feature[] = [
     highlight: 'Mayor impacto.',
     description:
       'Ajustá los elementos de tu interés de forma dinámica para lograr un mayor impacto. Realizá cambios en tiempo real sin intermediarios ni demoras innecesarias — vos tenés el control.',
-      image: './src/assets/Features/Display.png',
+    image: imgDisplay,
   },
   {
     id: 3,
@@ -75,7 +88,7 @@ export const features: Feature[] = [
     highlight: 'Clientes siempre guiados.',
     description:
       'Administrá turnos o filas de acuerdo a las reglas propias de tu negocio. Generá comodidad y claridad con comunicación visual y auditiva para que tus clientes se sientan siempre guiados.',
-      image: './src/assets/Features/Ofertas.png',
+    image: imgOfertas,
   },
   {
     id: 4,
@@ -84,16 +97,16 @@ export const features: Feature[] = [
     highlight: 'A tu horario.',
     description:
       'Administrá el display de tu contenido variable en los horarios o pantallas que vos decidás, a la hora que seleccionés y que creas más conveniente para tu negocio.',
-      image: './src/assets/Features/Precios.png',
+    image: imgPrecios,
   },
 ]
 
 export const contactInfo: ContactInfo = {
   instagram: '@pypmediacr',
-  facebook: 'P&P Media CR',
-  linkedin: 'P&P Media CR',
+  facebook: 'PYPMediaCR',
+  linkedin: '',
   phone: '+506 6066-1122',
   hours: 'Lunes a Viernes\n9:00 a.m. — 5:00 p.m.',
   address: 'Pinares, Curridabat\nSan José 11803, Costa Rica',
-  coordinates: [9.9006, -84.0326], // Pinares, Curridabat
+  coordinates: [9.9006, -84.0326],
 }

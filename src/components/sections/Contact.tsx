@@ -132,10 +132,10 @@ export default function Contact() {
   })
 
   const socialLinks = [
-    { label: 'Instagram', value: contactInfo.instagram, href: 'https://instagram.com/pypmediacr' },
-    { label: 'Facebook', value: contactInfo.facebook, href: 'https://facebook.com/pypmediacr' },
+    { label: 'Instagram', value: contactInfo.instagram, href: 'https://www.instagram.com/pypmediacostarica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
+    { label: 'Facebook', value: contactInfo.facebook, href: 'https://www.facebook.com/profile.php?id=61558068939163&ref=NONE_xav_ig_profile_page_web#' },
     { label: 'WhatsApp', value: '+506 6066-1122', href: 'https://wa.me/50660661122' },
-    { label: 'Email', value: 'ventas@pypmediacr.com', href: 'mailto:ventas@pypmediacr.com' },
+    { label: 'Email', value: 'rhorvilleur@pypmediacr.com', href: 'mailto:rhorvilleur@pypmediacr.com' },
     
   ]
 
