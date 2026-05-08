@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #0A0A0A;
+    --color-primary: #F5F5F5;
+    --color-gold: #C9A96E;
+    --color-cream: #E8D5B7;
+    --color-surface: #141414;
+    --color-border: #1F1F1F;
+    --color-hover: #A67C52;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3 font-display font-semibold text-sm tracking-widest uppercase;
+    background: transparent;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:active {
+    background: var(--color-hover);
+    border-color: var(--color-hover);
+    color: var(--color-primary);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-7 py-3 font-display font-semibold text-sm tracking-widest uppercase;
+    background: transparent;
+    border: 1px solid rgba(245, 245, 245, 0.2);
+    color: var(--color-primary);
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-cream);
+    color: var(--color-cream);
+  }
+
+  .btn-secondary:active {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+
+  .section-label {
+    @apply font-display text-xs tracking-[0.3em] uppercase;
+    color: var(--color-gold);
+  }
+
+  .gold-text {
+    color: var(--color-gold);
+  }
+
+  .cream-text {
+    color: var(--color-cream);
+  }
+}
+
+/* Leaflet dark theme override */
+.leaflet-container {
+  background: #0A0A0A !important;
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+/* Horizontal scroll section */
+.horizontal-scroll-container {
+  overflow: hidden;
+}
+
+/* Feature card image placeholder */
+.feature-img-placeholder {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  will-change: transform, opacity;
+}
