@@ -109,7 +109,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28" style={{ zIndex: 3 }}>
+      <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28 pt-20 lg:pt-0" style={{ zIndex: 3 }}>
         <div className="max-w-3xl">
 
           <span ref={tagRef} className="section-label mb-2 block">

@@ -12,14 +12,15 @@ import imgCatalogos from '../assets/Features/Catalogos.png'
 import imgDisplay from '../assets/Features/Display.png'
 import imgOfertas from '../assets/Features/Ofertas.png'
 import imgPrecios from '../assets/Features/Precios.png'
+import vidSincro from '../assets/Features/Sincro.mp4'
 
 export const heroContent = {
-  tagline: 'Digital Signage — Partner oficial NSIGN TV en Costa Rica',
+  tagline: 'Digital Signage — Expertos en Cartelería digital en Costa Rica',
   headline: 'Tu pantalla.',
   headlineAccent: 'Tu mensaje.',
   headlineSuffix: 'Sin límites.',
   subheadline:
-    'Si buscás el efecto WOW en tus clientes, somos la solución. Administrá tu contenido digital en tiempo real, desde cualquier parte del mundo.',
+    'Especialistas en Cartelería digital, data analytics y experiencias interactivas. Transformamos espacios en puntos de conexión entre tu marca y tus clientes.',
   cta: 'Conoce nuestras soluciones',
   ctaSecondary: 'Hablemos',
 }
@@ -98,6 +99,15 @@ export const features: Feature[] = [
     description:
       'Administrá el display de tu contenido variable en los horarios o pantallas que vos decidás, a la hora que seleccionés y que creas más conveniente para tu negocio.',
     image: imgPrecios,
+  },
+  {
+    id: 5,
+    number: '05',
+    title: 'Efecto SINCRO y Sensores',
+    highlight: 'Experiencias que sorprenden.',
+    description:
+      'Creamos experiencias que reaccionan en tiempo real. Nuestro efecto sincro, integrado con sensores Nexmosphere, conecta cada interacción del usuario con contenidos visuales dinámicos y perfectamente sincronizados, transformando el espacio en una experiencia viva que atrae, sorprende y genera resultados medibles.',
+    image: vidSincro,
   },
 ]
 

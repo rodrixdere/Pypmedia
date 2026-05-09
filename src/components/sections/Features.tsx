@@ -14,7 +14,6 @@ export default function Features() {
     if (!section) return
 
     const ctx = gsap.context(() => {
-      // Heading entrance
       gsap.from(headingRef.current, {
         opacity: 0,
         y: 30,
@@ -26,7 +25,6 @@ export default function Features() {
         },
       })
 
-      // Each feature block: stagger in from bottom
       const featureBlocks = section.querySelectorAll('.feature-block')
       featureBlocks.forEach((block) => {
         const left = block.querySelector('.feature-left')
@@ -54,7 +52,6 @@ export default function Features() {
           },
         })
 
-        // Number counter effect
         const numEl = block.querySelector('.feature-number')
         if (numEl) {
           gsap.from(numEl, {
@@ -69,7 +66,6 @@ export default function Features() {
           })
         }
 
-        // Line reveal
         const line = block.querySelector('.feature-line')
         if (line) {
           gsap.from(line, {
@@ -116,6 +112,7 @@ export default function Features() {
         <div className="flex flex-col gap-0">
           {features.map((feature, index) => {
             const isEven = index % 2 === 0
+            const isVideo = String(feature.image).endsWith('.mp4')
 
             return (
               <div
@@ -134,7 +131,6 @@ export default function Features() {
                 >
                   {/* Left / Text side */}
                   <div className="feature-left flex-1 flex flex-col justify-center">
-                    {/* Number */}
                     <div className="relative mb-8">
                       <span
                         className="feature-number font-display font-bold absolute -top-8 -left-2 select-none pointer-events-none"
@@ -159,9 +155,7 @@ export default function Features() {
                     >
                       {feature.title}
                     </h3>
-                    <p
-                      className="font-display font-semibold text-xl mb-5 gold-text"
-                    >
+                    <p className="font-display font-semibold text-xl mb-5 gold-text">
                       {feature.highlight}
                     </p>
                     <p
@@ -172,18 +166,30 @@ export default function Features() {
                     </p>
                   </div>
 
-                  {/* Right / Image side */}
+                  {/* Right / Media side */}
                   <div className="feature-right flex-1">
                     {feature.image ? (
                       <div
                         className="w-full h-64 lg:h-80 flex items-center justify-center"
                         style={{ background: '#0A0A0A' }}
                       >
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="w-full h-full object-contain"
-                        />
+                        {isVideo ? (
+                          <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-contain"
+                          >
+                            <source src={feature.image} type="video/mp4" />
+                          </video>
+                        ) : (
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="w-full h-full object-contain"
+                          />
+                        )}
                       </div>
                     ) : (
                       <div
