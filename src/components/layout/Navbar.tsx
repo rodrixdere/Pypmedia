@@ -1,23 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
+import logoImg from "../../assets/Hero/logo.png";
 
 const navLinks = [
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Industrias', href: '#industrias' },
-  { label: 'Contacto', href: '#contacto' },
-]
+  { label: "Servicios", href: "#servicios" },
+  { label: "Industrias", href: "#industrias" },
+  { label: "Contacto", href: "#contacto" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const navRef = useRef<HTMLElement>(null)
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 60);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -25,32 +26,17 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
         background: scrolled
-  ? 'rgba(10, 10, 10, 0.92)'
-  : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, transparent 100%)',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid #1F1F1F' : '1px solid transparent',
+          ? "rgba(10, 10, 10, 0.92)"
+          : "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, transparent 100%)",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid #1F1F1F" : "1px solid transparent",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div
-            className="w-8 h-8 flex items-center justify-center"
-            style={{ border: '1px solid var(--color-gold)' }}
-          >
-            <span
-              className="font-display font-semibold text-sm tracking-widest uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
-              style={{ color: 'var(--color-gold)' }}
-            >
-              P&P
-            </span>
-          </div>
-          <span
-            className="font-display font-semibold text-sm tracking-widest uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            Media CR
-          </span>
+        {/* Logo */}
+        <a href="#" className="flex items-center group">
+          <img src={logoImg} alt="P&P Media CR" className="h-20 w-auto" />
         </a>
 
         {/* Desktop links */}
@@ -60,14 +46,14 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className="font-body text-sm transition-colors duration-200 [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
-                style={{ color: 'var(--color-cream)', opacity: 0.7 }}
+                style={{ color: "var(--color-cream)", opacity: 0.7 }}
                 onMouseEnter={(e) => {
-                  ;(e.target as HTMLElement).style.color = 'var(--color-gold)'
-                  ;(e.target as HTMLElement).style.opacity = '1'
+                  (e.target as HTMLElement).style.color = "var(--color-gold)";
+                  (e.target as HTMLElement).style.opacity = "1";
                 }}
                 onMouseLeave={(e) => {
-                  ;(e.target as HTMLElement).style.color = 'var(--color-cream)'
-                  ;(e.target as HTMLElement).style.opacity = '0.7'
+                  (e.target as HTMLElement).style.color = "var(--color-cream)";
+                  (e.target as HTMLElement).style.opacity = "0.7";
                 }}
               >
                 {link.label}
@@ -77,7 +63,10 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <a href="#contacto" className="btn-primary hidden md:inline-flex text-xs py-2 px-5">
+        <a
+          href="#contacto"
+          className="btn-primary hidden md:inline-flex text-xs py-2 px-5"
+        >
           Hablemos
         </a>
 
@@ -90,22 +79,26 @@ export default function Navbar() {
           <span
             className="block w-5 h-px transition-all duration-300"
             style={{
-              background: 'var(--color-primary)',
-              transform: menuOpen ? 'rotate(45deg) translate(2px, 2px)' : 'none',
+              background: "var(--color-primary)",
+              transform: menuOpen
+                ? "rotate(45deg) translate(2px, 2px)"
+                : "none",
             }}
           />
           <span
             className="block w-5 h-px transition-all duration-300"
             style={{
-              background: 'var(--color-primary)',
+              background: "var(--color-primary)",
               opacity: menuOpen ? 0 : 1,
             }}
           />
           <span
             className="block w-5 h-px transition-all duration-300"
             style={{
-              background: 'var(--color-primary)',
-              transform: menuOpen ? 'rotate(-45deg) translate(2px, -2px)' : 'none',
+              background: "var(--color-primary)",
+              transform: menuOpen
+                ? "rotate(-45deg) translate(2px, -2px)"
+                : "none",
             }}
           />
         </button>
@@ -115,9 +108,9 @@ export default function Navbar() {
       <div
         className="md:hidden overflow-hidden transition-all duration-400"
         style={{
-          maxHeight: menuOpen ? '300px' : '0',
-          background: 'rgba(10,10,10,0.97)',
-          borderTop: menuOpen ? '1px solid var(--color-border)' : 'none',
+          maxHeight: menuOpen ? "300px" : "0",
+          background: "rgba(10,10,10,0.97)",
+          borderTop: menuOpen ? "1px solid var(--color-border)" : "none",
         }}
       >
         <ul className="flex flex-col px-6 py-6 gap-6">
@@ -126,7 +119,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className="font-display text-base tracking-wide"
-                style={{ color: 'var(--color-cream)' }}
+                style={{ color: "var(--color-cream)" }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -134,12 +127,16 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <a href="#contacto" className="btn-primary text-xs" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#contacto"
+              className="btn-primary text-xs"
+              onClick={() => setMenuOpen(false)}
+            >
               Hablemos
             </a>
           </li>
         </ul>
       </div>
     </nav>
-  )
+  );
 }
