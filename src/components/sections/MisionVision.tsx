@@ -104,16 +104,16 @@ export default function MisionVision() {
               }}
             />
             <p className="font-display font-semibold text-xl mb-5 gold-text">
-              Partner oficial de Nsign TV en Costa Rica.
+              Un equipo enfocado en tu éxito.
             </p>
             <p
               className="font-body text-base leading-relaxed"
               style={{ color: "var(--color-cream)", opacity: 0.8 }}
             >
               Somos un equipo de profesionales orientados a brindarte un alto
-              nivel de servicio. Como partner autorizado de Nsign TV, te
-              acompañamos en el desarrollo de contenido y la administración de
-              la plataforma para maximizar tu impacto.
+              nivel de servicio, acompañándote en el desarrollo de contenido y
+              la administración de la plataforma para que tus pantallas generen
+              el máximo impacto.
             </p>
           </div>
         </div>
