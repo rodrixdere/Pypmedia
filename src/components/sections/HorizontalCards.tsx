@@ -6,11 +6,12 @@ import type { CardItem } from '../../types'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const BASE_W = 350
-const BASE_H = 450
-const EXPANDED_W = 500
-const EXPANDED_H = 620
-// DESC_H: space below image shown on hover
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
+const BASE_W = isMobile ? 240 : 380
+const BASE_H = isMobile ? 320 : 480
+const EXPANDED_W = isMobile ? 280 : 500
+const EXPANDED_H = isMobile ? 480 : 620
 const DESC_H = EXPANDED_H - BASE_H
 
 function Card({ card, index }: { card: CardItem; index: number }) {
