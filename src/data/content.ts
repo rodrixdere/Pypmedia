@@ -72,7 +72,7 @@ export const features: Feature[] = [
     highlight: 'Sin intermediarios.',
     description:
       'Administrá tu contenido digital y presentalo a tus clientes al instante sin demoras. Desde tu PC y desde cualquier parte del mundo, con control total sobre lo que se muestra en pantalla.',
-    image: imgCatalogos,
+    image: imgOfertas,
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ export const features: Feature[] = [
     highlight: 'Mayor impacto.',
     description:
       'Ajustá los elementos de tu interés de forma dinámica para lograr un mayor impacto. Realizá cambios en tiempo real sin intermediarios ni demoras innecesarias — vos tenés el control.',
-    image: imgDisplay,
+    image: imgPrecios,
   },
   {
     id: 3,
@@ -90,7 +90,7 @@ export const features: Feature[] = [
     highlight: 'Clientes siempre guiados.',
     description:
       'Administrá turnos o filas de acuerdo a las reglas propias de tu negocio. Generá comodidad y claridad con comunicación visual y auditiva para que tus clientes se sientan siempre guiados.',
-    image: imgPrecios,
+    image: imgCatalogos,
   },
   {
     id: 4,
@@ -99,7 +99,7 @@ export const features: Feature[] = [
     highlight: 'A tu horario.',
     description:
       'Administrá el display de tu contenido variable en los horarios o pantallas que vos decidás, a la hora que seleccionés y que creas más conveniente para tu negocio.',
-    image: imgOfertas,
+    image: imgDisplay,
   },
   {
     id: 5,

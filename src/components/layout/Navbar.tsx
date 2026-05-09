@@ -34,7 +34,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
-        {/* Logo */}
         <a href="#" className="flex items-center group">
           <img src={logoImg} alt="P&P Media CR" className="h-20 w-auto" />
         </a>

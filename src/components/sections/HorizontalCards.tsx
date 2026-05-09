@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-const BASE_W = isMobile ? 240 : 380
-const BASE_H = isMobile ? 320 : 480
+const BASE_W = isMobile ? 240 : 350
+const BASE_H = isMobile ? 320 : 420
 const EXPANDED_W = isMobile ? 280 : 500
 const EXPANDED_H = isMobile ? 480 : 620
 const DESC_H = EXPANDED_H - BASE_H

@@ -1,3 +1,5 @@
+import logoImg from "../../assets/Hero/logo.png";
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -8,20 +10,9 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div
-            className="w-6 h-6 flex items-center justify-center"
-            style={{ border: '1px solid var(--color-gold)' }}
-          >
-            <span className="font-display font-bold text-[8px]" style={{ color: 'var(--color-gold)' }}>
-              P&P
-            </span>
-          </div>
-          <span
-            className="font-display text-xs tracking-widest uppercase"
-            style={{ color: 'var(--color-cream)', opacity: 0.6 }}
-          >
-            Media CR
-          </span>
+          <a href="#" className="flex items-center group">
+          <img src={logoImg} alt="P&P Media CR" className="h-12 w-auto" />
+        </a>
         </div>
 
         <p

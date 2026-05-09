@@ -206,7 +206,6 @@ export default function Features() {
           })}
 
           {/* Bottom border */}
-          <div style={{ borderTop: '1px solid var(--color-border)' }} />
         </div>
       </div>
     </section>
