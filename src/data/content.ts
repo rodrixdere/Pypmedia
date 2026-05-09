@@ -116,7 +116,7 @@ export const features: Feature[] = [
     title: 'Inteligencia de Audiencia en Tiempo Real',
     highlight: 'El mensaje correcto, a la persona correcta.',
     description:
-      'Convierte tus pantallas en herramientas de venta activa con data analytics que analiza el entorno en tiempo real (género , edad, estado de ánimo) para cambiar el contenido automáticamente y mostrar el mensaje preciso al cliente adecuado. Registra la data y presenta la efectividad de tus campañas al instante.',
+      'Convierte tus pantallas en herramientas de venta activa con data analytics que analiza el entorno en tiempo real para cambiar el contenido automáticamente y mostrar el mensaje preciso al cliente adecuado. Registra la data y presenta la efectividad de tus campañas al instante.',
     image: imgAudiencia,
   },
 ]

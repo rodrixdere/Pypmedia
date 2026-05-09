@@ -7,10 +7,6 @@ import MapEmbed from '../ui/MapEmbed'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Loaded from .env — create a .env file at project root:
-// VITE_EMAILJS_SERVICE_ID=your_service_id
-// VITE_EMAILJS_TEMPLATE_ID=your_template_id
-// VITE_EMAILJS_PUBLIC_KEY=your_public_key
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
@@ -19,9 +15,10 @@ type FormState = {
   nombre: string
   correo: string
   mensaje: string
+  _honeypot: string
 }
 
-type FormErrors = Partial<FormState>
+type FormErrors = Partial<Omit<FormState, '_honeypot'>>
 
 function validate(form: FormState): FormErrors {
   const errors: FormErrors = {}
@@ -41,7 +38,7 @@ export default function Contact() {
   const rightRef = useRef<HTMLDivElement>(null)
   const mapWrapRef = useRef<HTMLDivElement>(null)
 
-  const [form, setForm] = useState<FormState>({ nombre: '', correo: '', mensaje: '' })
+  const [form, setForm] = useState<FormState>({ nombre: '', correo: '', mensaje: '', _honeypot: '' })
   const [errors, setErrors] = useState<FormErrors>({})
   const [focused, setFocused] = useState<string | null>(null)
   const [sending, setSending] = useState(false)
@@ -51,59 +48,41 @@ export default function Contact() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(leftRef.current, {
-        opacity: 0,
-        x: -40,
-        duration: 0.9,
-        ease: 'power3.out',
+        opacity: 0, x: -40, duration: 0.9, ease: 'power3.out',
         scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
       gsap.from(rightRef.current, {
-        opacity: 0,
-        x: 40,
-        duration: 0.9,
-        ease: 'power3.out',
+        opacity: 0, x: 40, duration: 0.9, ease: 'power3.out',
         scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
       })
       gsap.from(mapWrapRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
+        opacity: 0, y: 30, duration: 0.8, ease: 'power2.out',
         scrollTrigger: { trigger: mapWrapRef.current, start: 'top 80%' },
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }))
-    }
+    if (errors[name as keyof FormErrors]) setErrors((prev) => ({ ...prev, [name]: undefined }))
     if (submitError) setSubmitError(null)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (form._honeypot) return
     const validation = validate(form)
-    if (Object.keys(validation).length > 0) {
-      setErrors(validation)
-      return
-    }
+    if (Object.keys(validation).length > 0) { setErrors(validation); return }
     setSending(true)
     setSubmitError(null)
     try {
-      // Template variables must match your EmailJS template: {{nombre}}, {{correo}}, {{mensaje}}
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        { nombre: form.nombre, correo: form.correo, mensaje: form.mensaje },
-        EMAILJS_PUBLIC_KEY
-      )
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        nombre: form.nombre, correo: form.correo, mensaje: form.mensaje,
+      }, EMAILJS_PUBLIC_KEY)
       setSent(true)
-      setForm({ nombre: '', correo: '', mensaje: '' })
+      setForm({ nombre: '', correo: '', mensaje: '', _honeypot: '' })
     } catch (err) {
       console.error('EmailJS error:', err)
       setSubmitError('Hubo un error al enviar. Intenta de nuevo.')
@@ -112,23 +91,13 @@ export default function Contact() {
     }
   }
 
-  const inputBase =
-    'w-full px-4 py-3.5 font-body text-sm bg-transparent outline-none transition-all duration-300'
+  const inputBase = 'w-full px-4 py-3.5 font-body text-sm bg-transparent outline-none transition-all duration-300'
 
   const inputStyle = (field: string) => ({
-    border: `1px solid ${
-      errors[field as keyof FormErrors]
-        ? 'rgba(220,80,80,0.6)'
-        : focused === field
-        ? 'var(--color-gold)'
-        : 'var(--color-border)'
-    }`,
+    border: `1px solid ${errors[field as keyof FormErrors] ? 'rgba(220,80,80,0.6)' : focused === field ? 'var(--color-gold)' : 'var(--color-border)'}`,
     color: 'var(--color-primary)',
     background: 'var(--color-surface)',
-    boxShadow:
-      focused === field && !errors[field as keyof FormErrors]
-        ? '0 0 0 1px rgba(201,169,110,0.12)'
-        : 'none',
+    boxShadow: focused === field && !errors[field as keyof FormErrors] ? '0 0 0 1px rgba(201,169,110,0.12)' : 'none',
   })
 
   const socialLinks = [
@@ -136,7 +105,6 @@ export default function Contact() {
     { label: 'Instagram', value: contactInfo.instagram, href: 'https://www.instagram.com/pypmediacostarica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
     { label: 'Facebook', value: contactInfo.facebook, href: 'https://www.facebook.com/profile.php?id=61558068939163&ref=NONE_xav_ig_profile_page_web#' },
     { label: 'Email', value: 'rhorvilleur@pypmediacr.com', href: 'mailto:rhorvilleur@pypmediacr.com' },
-    
   ]
 
   return (
@@ -165,10 +133,7 @@ export default function Contact() {
             <div className="flex flex-col gap-3 mb-8">
               {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} className="flex items-center gap-3 w-fit">
-                  <span
-                    className="font-display text-xs tracking-[0.2em] uppercase w-20"
-                    style={{ color: 'var(--color-gold)', opacity: 0.6 }}
-                  >
+                  <span className="font-display text-xs tracking-[0.2em] uppercase w-20" style={{ color: 'var(--color-gold)', opacity: 0.6 }}>
                     {s.label}
                   </span>
                   <span
@@ -181,23 +146,9 @@ export default function Contact() {
                   </span>
                 </a>
               ))}
-              <div className="flex items-center gap-3 mt-1">
-                <span
-                  className="font-display text-xs tracking-[0.2em] uppercase w-20"
-                  style={{ color: 'var(--color-gold)', opacity: 0.6 }}
-                >
-                  Teléfono
-                </span>
-                <span className="font-body text-sm" style={{ color: 'var(--color-cream)' }}>
-                  {contactInfo.phone}
-                </span>
-              </div>
             </div>
 
-            <div
-              className="p-5"
-              style={{ border: '1px solid var(--color-border)', background: 'var(--color-surface)' }}
-            >
+            <div className="p-5" style={{ border: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
               <span className="section-label block mb-3">Horarios de atención</span>
               {contactInfo.hours.split('\n').map((line, i) => (
                 <p key={i} className="font-body text-sm" style={{ color: 'var(--color-cream)', opacity: 0.75 }}>
@@ -211,10 +162,7 @@ export default function Contact() {
           <div ref={rightRef}>
             {sent ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-20">
-                <div
-                  className="w-12 h-12 flex items-center justify-center mb-6"
-                  style={{ border: '1px solid var(--color-gold)' }}
-                >
+                <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ border: '1px solid var(--color-gold)' }}>
                   <span className="gold-text text-xl">✓</span>
                 </div>
                 <h3 className="font-display font-bold text-2xl mb-2" style={{ color: 'var(--color-primary)' }}>
@@ -226,49 +174,28 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-                {/* Nombre */}
-                <div className="flex flex-col gap-1">
-                  <input
-                    type="text"
-                    name="nombre"
-                    placeholder="Nombre"
-                    value={form.nombre}
-                    onChange={handleChange}
-                    onFocus={() => setFocused('nombre')}
-                    onBlur={() => setFocused(null)}
-                    className={inputBase}
-                    style={inputStyle('nombre')}
-                    autoComplete="name"
-                  />
-                  {errors.nombre && (
-                    <span className="font-body text-xs" style={{ color: 'rgba(220,80,80,0.9)' }}>
-                      {errors.nombre}
-                    </span>
-                  )}
+                <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+                  <input type="text" name="_honeypot" value={form._honeypot} onChange={handleChange} tabIndex={-1} autoComplete="off" />
                 </div>
 
-                {/* Correo */}
-                <div className="flex flex-col gap-1">
-                  <input
-                    type="email"
-                    name="correo"
-                    placeholder="Correo electrónico"
-                    value={form.correo}
-                    onChange={handleChange}
-                    onFocus={() => setFocused('correo')}
-                    onBlur={() => setFocused(null)}
-                    className={inputBase}
-                    style={inputStyle('correo')}
-                    autoComplete="email"
-                  />
-                  {errors.correo && (
-                    <span className="font-body text-xs" style={{ color: 'rgba(220,80,80,0.9)' }}>
-                      {errors.correo}
-                    </span>
-                  )}
-                </div>
+                {(['nombre', 'correo'] as const).map((field) => (
+                  <div key={field} className="flex flex-col gap-1">
+                    <input
+                      type={field === 'correo' ? 'email' : 'text'}
+                      name={field}
+                      placeholder={field === 'correo' ? 'Correo electrónico' : 'Nombre'}
+                      value={form[field]}
+                      onChange={handleChange}
+                      onFocus={() => setFocused(field)}
+                      onBlur={() => setFocused(null)}
+                      className={inputBase}
+                      style={inputStyle(field)}
+                      autoComplete={field === 'correo' ? 'email' : 'name'}
+                    />
+                    {errors[field] && <span className="font-body text-xs" style={{ color: 'rgba(220,80,80,0.9)' }}>{errors[field]}</span>}
+                  </div>
+                ))}
 
-                {/* Mensaje */}
                 <div className="flex flex-col gap-1">
                   <textarea
                     name="mensaje"
@@ -281,18 +208,10 @@ export default function Contact() {
                     className={`${inputBase} resize-none`}
                     style={inputStyle('mensaje')}
                   />
-                  {errors.mensaje && (
-                    <span className="font-body text-xs" style={{ color: 'rgba(220,80,80,0.9)' }}>
-                      {errors.mensaje}
-                    </span>
-                  )}
+                  {errors.mensaje && <span className="font-body text-xs" style={{ color: 'rgba(220,80,80,0.9)' }}>{errors.mensaje}</span>}
                 </div>
 
-                {submitError && (
-                  <p className="font-body text-sm" style={{ color: 'rgba(220,80,80,0.9)' }}>
-                    {submitError}
-                  </p>
-                )}
+                {submitError && <p className="font-body text-sm" style={{ color: 'rgba(220,80,80,0.9)' }}>{submitError}</p>}
 
                 <button
                   type="submit"

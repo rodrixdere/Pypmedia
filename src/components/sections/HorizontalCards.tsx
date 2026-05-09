@@ -208,12 +208,6 @@ export default function HorizontalCards() {
               <span className="gold-text">cada sector</span>
             </h2>
           </div>
-          <p
-            className="hidden lg:block font-body text-sm max-w-xs text-right"
-            style={{ color: 'var(--color-cream)', opacity: 0.4 }}
-          >
-            Pasá el cursor sobre cada industria para saber más.
-          </p>
         </div>
 
         {/* Cards track — items-center so expanded card grows from center */}
