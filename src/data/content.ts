@@ -12,6 +12,7 @@ import imgCatalogos from '../assets/Features/Catalogos.png'
 import imgDisplay from '../assets/Features/Display.png'
 import imgOfertas from '../assets/Features/Ofertas.png'
 import imgPrecios from '../assets/Features/Precios.png'
+import imgAudiencia from '../assets/Features/Audiencia.png'
 import vidSincro from '../assets/Features/Sincro.mp4'
 
 export const heroContent = {
@@ -20,7 +21,7 @@ export const heroContent = {
   headlineAccent: 'Tu mensaje.',
   headlineSuffix: 'Sin límites.',
   subheadline:
-    'Especialistas en Cartelería digital, data analytics y experiencias interactivas. Transformamos espacios en puntos de conexión entre tu marca y tus clientes.',
+    'Contenido dinámico, cartelería digital inteligente, analítica en tiempo real, CMS avanzado, señalización digital basada en datos',
   cta: 'Conoce nuestras soluciones',
   ctaSecondary: 'Hablemos',
 }
@@ -89,7 +90,7 @@ export const features: Feature[] = [
     highlight: 'Clientes siempre guiados.',
     description:
       'Administrá turnos o filas de acuerdo a las reglas propias de tu negocio. Generá comodidad y claridad con comunicación visual y auditiva para que tus clientes se sientan siempre guiados.',
-    image: imgOfertas,
+    image: imgPrecios,
   },
   {
     id: 4,
@@ -98,7 +99,7 @@ export const features: Feature[] = [
     highlight: 'A tu horario.',
     description:
       'Administrá el display de tu contenido variable en los horarios o pantallas que vos decidás, a la hora que seleccionés y que creas más conveniente para tu negocio.',
-    image: imgPrecios,
+    image: imgOfertas,
   },
   {
     id: 5,
@@ -109,6 +110,15 @@ export const features: Feature[] = [
       'Creamos experiencias que reaccionan en tiempo real. Nuestro efecto sincro, integrado con sensores Nexmosphere, conecta cada interacción del usuario con contenidos visuales dinámicos y perfectamente sincronizados, transformando el espacio en una experiencia viva que atrae, sorprende y genera resultados medibles.',
     image: vidSincro,
   },
+  {
+    id: 6,
+    number: '06',
+    title: 'Inteligencia de Audiencia en Tiempo Real',
+    highlight: 'El mensaje correcto, a la persona correcta.',
+    description:
+      'Convierte tus pantallas en herramientas de venta activa con data analytics que analiza el entorno en tiempo real (género , edad, estado de ánimo) para cambiar el contenido automáticamente y mostrar el mensaje preciso al cliente adecuado. Registra la data y presenta la efectividad de tus campañas al instante.',
+    image: imgAudiencia,
+  },
 ]
 
 export const contactInfo: ContactInfo = {
@@ -116,7 +126,7 @@ export const contactInfo: ContactInfo = {
   facebook: 'PYPMediaCR',
   linkedin: '',
   phone: '+506 6066-1122',
-  hours: 'Lunes a Viernes\n9:00 a.m. — 5:00 p.m.',
+  hours: 'Lunes a Viernes\n8:00 a.m. — 5:00 p.m.',
   address: 'Pinares, Curridabat\nSan José 11803, Costa Rica',
   coordinates: [9.9006, -84.0326],
 }
