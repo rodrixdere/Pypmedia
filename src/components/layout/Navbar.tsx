@@ -4,6 +4,7 @@ import logoImg from "../../assets/Hero/logo.png";
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
   { label: "Industrias", href: "#industrias" },
+  { label: "Nosotros", href: "#nosotros" },
   { label: "Contacto", href: "#contacto" },
 ];
 

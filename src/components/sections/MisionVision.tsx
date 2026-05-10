@@ -40,6 +40,7 @@ export default function MisionVision() {
   return (
     <section
       ref={sectionRef}
+      id="nosotros"
       className="py-24 lg:py-36 px-6 lg:px-12"
       style={{ background: "var(--color-bg)" }}
     >
